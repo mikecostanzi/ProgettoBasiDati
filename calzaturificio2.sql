@@ -29,6 +29,11 @@ Tipo_forn varchar(2) not null,
 check(Tipo_forn="m" or Tipo_forn="s" or Tipo_forn="ms" or Tipo_forn="t"),
 primary key(Tipo_forn)
 );
+create table Rifornimento(
+Codice_fornitore char(11) not null references Fornitore(Codice_forn),
+Tipo_fornitore varchar(2) not null references Tipologia(Tipo_forn),
+primary key(Codice_fornitore, Tipo_fornitore)
+);
 create table Contratto(
 Codice_cont int not null auto_increment,
 data date not null,
