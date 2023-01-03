@@ -60,7 +60,7 @@ prezzo numeric(7,2) not null,
 check(prezzo > 0),
 Cliente char(11) not null,
 primary key(Codice_ven),
-foreign key(Cliente) references Contratto(Codice_cont)
+foreign key(Cliente) references Cliente(P_iva_cliente)
 );
 
 create table ContrattoLavoro(
@@ -102,7 +102,7 @@ durezza tinyint not null,
 check(durezza > 0 and durezza < 100),
 Contratto_Acquisto int not null,
 primary key(Codice_mat_prim),
-foreign key(Contratto_Acquisto) references ContrattoAqcuisto(Codice_acqu)
+foreign key(Contratto_Acquisto) references ContrattoAcquisto(Codice_acqu)
 );
 
 create table ProdottoFinito(
