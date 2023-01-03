@@ -77,7 +77,7 @@ foreign key(Dipendente) references Dipendente(Codice_dip)
 create table Materiale(
 Codice_mat int not null,
 settore tinyint not null,
-check(settore > 0 and settore < 1),
+check(settore > 0 and settore < 4),
 scaffale char not null,
 ripiano tinyint not null,
 check(ripiano > 0 and ripiano < 21),
