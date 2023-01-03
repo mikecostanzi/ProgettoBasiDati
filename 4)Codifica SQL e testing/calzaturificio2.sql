@@ -100,22 +100,40 @@ elasticita tinyint not null,
 check(elasticita > 0 and elasticita < 100),
 durezza tinyint not null,
 check(durezza > 0 and durezza < 100),
-Contratto_Acquisto int not null,
-primary key(Codice_mat_prim),
-foreign key(Contratto_Acquisto) references ContrattoAcquisto(Codice_acqu)
+primary key(Codice_mat_prim)
 );
 
 create table ProdottoFinito(
 Codice_prod_fin int not null references Materiale(Codice_mat),
 imballaggio varchar(9) not null,
 check(imballaggio = "primario" or imballaggio = "terziario"),
-Contratto_Vendita int not null,
-primary key(Codice_prod_fin),
-foreign key(Contratto_Vendita) references ContrattoVendita(Codice_ven)
+primary key(Codice_prod_fin)
 );
 create table Semilavorato(
 Codice_semi int not null references Materiale(Codice_mat),
-Contratto_Acquisto int not null,
-primary key(Codice_semi),
-foreign key(Contratto_Acquisto) references ContrattoAcquisto(Codice_acqu)
+primary key(Codice_semi)
+);
+
+create table catal_vendita(
+ContrVendita int not null references ContrattoVendita(Codice_ven),
+materiale int not null references Materiale(Codice_mat),
+prezzo numeric(5,2) not null,
+quantita int not null,
+primary key(ContrVendita, materiale)
+);
+
+create table catal_semilavorato(
+ContrAcquisto int not null references ContrattoAcquisto(Codice_acqu),
+materiale int not null references Semilavorato(Codice_semi),
+prezzo numeric(5,2) not null,
+quantita int not null,
+primary key(ContrAcquisto, materiale)
+);
+
+create table catal_materiaprima(
+ContrAcquisto int not null references ContrattoAcquisto(Codice_acqu),
+materiale int not null references MawteriaPrima(Codice_mat_prim),
+prezzo numeric(5,2) not null,
+quantita int not null,
+primary key(ContrAcquisto, materiale)
 );
