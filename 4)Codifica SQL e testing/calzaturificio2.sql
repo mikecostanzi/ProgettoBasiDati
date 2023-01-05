@@ -56,9 +56,9 @@ foreign key(Fornitore) references Fornitore(Codice_forn)
 
 create table ContrattoVendita(
 Codice_ven int not null references Contratto(Codice_cont),
-prezzo numeric(7,2) not null,
+prezzo numeric(7,2),
 check(prezzo > 0),
-Cliente char(11) not null,
+Cliente char(11),
 primary key(Codice_ven),
 foreign key(Cliente) references Cliente(P_iva_cliente)
 );
