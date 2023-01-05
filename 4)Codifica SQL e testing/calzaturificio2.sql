@@ -47,7 +47,7 @@ primary key(Codice_cont)
 
 create table ContrattoAcquisto(
 Codice_acqu int not null references Contratto(Codice_cont),
-importo numeric(7,2) not null,
+importo numeric(7,2),
 check(importo > 0),
 Fornitore char(11),
 primary key(Codice_acqu),
