@@ -132,7 +132,7 @@ primary key(ContrAcquisto, materiale)
 
 create table catal_materiaprima(
 ContrAcquisto int not null references ContrattoAcquisto(Codice_acqu),
-materiale int not null references MawteriaPrima(Codice_mat_prim),
+materiale int not null references MateriaPrima(Codice_mat_prim),
 prezzo numeric(5,2) not null,
 quantita int not null,
 primary key(ContrAcquisto, materiale)
