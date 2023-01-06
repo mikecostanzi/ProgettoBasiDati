@@ -1,3 +1,7 @@
+create database calzaturificio;
+
+use calzaturificio;
+
 create table Persona(
 Codice_pers varchar(16) not null,
 via varchar(40) not null,
